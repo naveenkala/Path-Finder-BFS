@@ -3,7 +3,7 @@ let start = document.getElementById("set-start");
 let end = document.getElementById("set-end");
 let start_pos = [1,1];
 let end_pos  = [20,20];
-let rock_pos_list=[];
+let dragon_pos_list=[];
 let state = 0;             // 0 for adding obstacle 1 for adding start 2 for adding end
 updateBoard();
 
@@ -59,23 +59,23 @@ function updateBoard()
 
             block.addEventListener('click',()=>{
                 let [r,c] = extractIndex(block.id);
-                let index = getIndexofArray(rock_pos_list,[r,c]);
+                let index = getIndexofArray(dragon_pos_list,[r,c]);
                 if(state === 0)
                 {   
                     if(start_pos[0] != r || start_pos[1] != c)
                     {   
-                        block.classList.toggle('stone');
+                        block.classList.toggle('dragon');
                         console.log(r,c,"changed");
 
                         if(index >= 0)
                         {
                             console.log(r,c,"removed");
-                            rock_pos_list.splice(index,1);    
+                            dragon_pos_list.splice(index,1);    
                         }
                         else
                         {
                             console.log(r,c,"added");
-                            rock_pos_list = rock_pos_list.concat([[r, c]]);
+                            dragon_pos_list = dragon_pos_list.concat([[r, c]]);
                         }
                     }
                 }
@@ -84,7 +84,7 @@ function updateBoard()
                     if(end_pos[0] != r || end_pos[1] != c)
                     {    
                         let prev_start = "r"+start_pos[0]+"c"+start_pos[1];
-                        block.classList.remove('stone');
+                        block.classList.remove('dragon');
                         document.getElementById(prev_start).classList.remove('start-block');
                         start_pos[0] = r;
                         start_pos[1] = c;
@@ -95,12 +95,12 @@ function updateBoard()
                         if(index >= 0)
                         {
                             console.log(r,c,"removed");
-                            rock_pos_list.splice(index,1);    
+                            dragon_pos_list.splice(index,1);    
                         }
                         else
                         {
                             console.log(r,c,"added");
-                            rock_pos_list = rock_pos_list.concat([[r, c]]);
+                            dragon_pos_list = dragon_pos_list.concat([[r, c]]);
                         }
                     }
                 }
@@ -109,7 +109,7 @@ function updateBoard()
                     if(start_pos[0] != r || start_pos[1] != c)
                     {    
                         let prev_end = "r"+end_pos[0]+"c"+end_pos[1];
-                        block.classList.remove('stone');
+                        block.classList.remove('dragon');
                         document.getElementById(prev_end).classList.remove('end-block');
                         end_pos[0] = r;
                         end_pos[1] = c;
@@ -120,12 +120,12 @@ function updateBoard()
                         if(index >= 0)
                         {
                             console.log(r,c,"removed");
-                            rock_pos_list.splice(index,1);    
+                            dragon_pos_list.splice(index,1);    
                         }
                         else
                         {
                             console.log(r,c,"added");
-                            rock_pos_list = rock_pos_list.concat([[r, c]]);
+                            dragon_pos_list = dragon_pos_list.concat([[r, c]]);
                         }
                     }
 

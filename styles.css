@@ -3,28 +3,27 @@
     margin-top: 20px;
     height: 1000px;
     width: 1000px;
+    background-image: url(./png/wall.png) ;
+
 }
 .nth-row{
     display: flex;
     flex-direction:  row;
     justify-content: space-between;
     box-sizing: border-box;
-    border: 1px solid blue;
 }
 
 .grid-block{
     box-sizing: border-box;
-    background-color: salmon;
-    border: 1px solid blue;
 }
-.stone{
-    background-color: brown;
+.dragon{
+    background-image: url(./png/dragon.png);
 }
 .start-block{
-    background-color: chartreuse;
+    background-image: url(./png/knight.png);
 }
 .end-block{
-    background-color: black;
+    background-image: url(./png/princess.png);
 }
 
 .selected{
