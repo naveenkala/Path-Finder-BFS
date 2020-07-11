@@ -1,0 +1,33 @@
+
+#grid{
+    margin-top: 20px;
+    height: 1000px;
+    width: 1000px;
+}
+.nth-row{
+    display: flex;
+    flex-direction:  row;
+    justify-content: space-between;
+    box-sizing: border-box;
+    border: 1px solid blue;
+}
+
+.grid-block{
+    box-sizing: border-box;
+    background-color: salmon;
+    border: 1px solid blue;
+}
+.stone{
+    background-color: brown;
+}
+.start-block{
+    background-color: chartreuse;
+}
+.end-block{
+    background-color: black;
+}
+
+.selected{
+    background-color: rgba(191, 241, 142, 0.61);
+    border-color: rgba(191, 241, 142, 0.61);
+}
