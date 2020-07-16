@@ -140,16 +140,13 @@ function updateBoard()
                     if(start_pos[0] != r || start_pos[1] != c)
                     {   
                         block.classList.toggle('dragon')
-                        console.log(r,c,"changed")
 
                         if(index >= 0)
                         {
-                            console.log(r,c,"removed")
                             dragon_pos_list.splice(index,1)    
                         }
                         else
                         {
-                            console.log(r,c,"added")
                             dragon_pos_list = dragon_pos_list.concat([[r, c]])
                         }
                     }

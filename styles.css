@@ -1,6 +1,24 @@
 
+body{
+    display: flex;
+}
+
+#btn-grp{
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+}
+
+#set-start{
+    margin-bottom: 10px;
+}
+
+#set-end{
+    margin-bottom: 10px;
+}
+
+
 #grid{
-    margin-top: 20px;
     height: 1000px;
     width: 1000px;
     background-image: url(./png/wall.png) ;
