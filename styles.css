@@ -30,3 +30,10 @@
     background-color: rgba(191, 241, 142, 0.61);
     border-color: rgba(191, 241, 142, 0.61);
 }
+
+.visited{
+    background-color: chartreuse;
+}
+.path{
+    background-color: seagreen;
+}
