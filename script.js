@@ -7,6 +7,15 @@ let start_pos = [0,0]
 let end_pos  = [19,19]
 let dragon_pos_list=[]
 
+//This is used to track if mouse is clicked
+//This will activate mousehover event when enabled
+//This is enebled in mouse click event listener
+let mouse_clicked = false
+
+//This is used to track doubleclicks of mouse
+//To tackle inconsistency of using mousehover, it is used
+let double_click = 0
+
 //Variables for path finding functions 
 let R = 20
 let C = 20
@@ -135,9 +144,11 @@ function updateBoard()
             block.addEventListener('click',()=>{
                 let [r,c] = extractIndex(block.id)
                 let index = getIndexofArray(dragon_pos_list,[r,c])
+                double_click = (double_click==1)?0:1
                 if(state === 0)
                 {   
-                    if(start_pos[0] != r || start_pos[1] != c)
+                    mouse_clicked = mouse_clicked? false:true
+                    if( (start_pos[0] != r || start_pos[1] != c) && (end_pos[0] != r || end_pos[1] != r) && double_click)
                     {   
                         block.classList.toggle('dragon')
 
@@ -153,6 +164,7 @@ function updateBoard()
                 }
                 else if(state === 1)
                 {
+                    mouse_clicked = false
                     if(end_pos[0] != r || end_pos[1] != c)
                     {    
                         let prev_start = "r"+start_pos[0]+"c"+start_pos[1]
@@ -178,6 +190,7 @@ function updateBoard()
                 }
                 else
                 {
+                    mouse_clicked = false
                     if(start_pos[0] != r || start_pos[1] != c)
                     {    
                         let prev_end = "r"+end_pos[0]+"c"+end_pos[1]
@@ -202,7 +215,35 @@ function updateBoard()
                     }
 
                 }   
-            })    
+            })
+            
+
+            //This is toggled when a mouse button is clicked
+            //mouseover is not used when a start or end position is resetted
+            block.addEventListener('mouseover',()=>{
+                let [r,c] = extractIndex(block.id)
+                let index = getIndexofArray(dragon_pos_list,[r,c])
+                if(state === 0 && mouse_clicked)
+                {   
+                    if((start_pos[0] != r || start_pos[1] != c) && (end_pos[0] != r || end_pos[1] != c))
+                    {   
+                        block.classList.toggle('dragon')
+
+                        if(index >= 0)
+                        {
+                            dragon_pos_list.splice(index,1)    
+                        }
+                        else
+                        {
+                            dragon_pos_list = dragon_pos_list.concat([[r, c]])
+                        }
+                    }
+                }
+
+
+
+
+            })
             
             nthRow.appendChild(block)
         }
@@ -297,13 +338,7 @@ function reach_neighbour(r,c)
     {    
         rr = ra[i]+r
         cc = ca[i]+c
-        if(rr<0 || cc<0)
-            continue
-        if(rr>= R || cc >= C)
-            continue
-        if(visited[rr][cc])
-            continue
-        if(final_board[rr][cc] == '#')
+        if( (rr<0 || cc<0) || (rr>= R || cc >= C) || visited[rr][cc] || final_board[rr][cc] == '#' )
             continue
         
         rq = rq.concat(rr)
