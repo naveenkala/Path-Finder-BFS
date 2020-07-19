@@ -6,14 +6,31 @@
     <title>Shortest path finder</title>
     <link rel="stylesheet" href="./styles.css">
 </head>
-<body>
-    <div id="grid">
+<body >
+    <div id = "grid">
     </div>
-    <div id="btn-grp">
-        <button id = "set-start">Set Start</button> 
-        <button id = "set-end">Set End</button> 
-        <button id = "find-path">Find Path</button>  
+    <div id = "btn-grp">
+        <button class = "btn" id = "set-start">Set Knight</button> 
+        <button class = "btn" id = "set-end">Set Princess</button> 
+        <button class = "btn" id = "find-path">Find Path</button>
+        <button class = "btn" id = "reset-grid">Reset Grid</button>  
     </div>
-    <script src="./script.js"></script>
+    <div id="my-modal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>Read First</h2>
+          </div>
+          <div class="modal-body">
+            <h2>Path finding using Breadth First Search</h2>
+            <p><h3>Add obstacle</h3></p>
+            <p>Click on any block to add dragon, further hover the pointer to add more. Click again to stop adding</p>
+            <hr>
+            <p><h3>Change knight's or princess's position</h3></p>
+            <p>Click on set knight or set princess then click on any other block to change position</p>
+          </div>
+        </div>
+      </div>
+    <script src = "./script.js"></script>
 </body>
 </html>

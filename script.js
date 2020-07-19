@@ -3,9 +3,31 @@ let grid = document.getElementById("grid")
 let start = document.getElementById("set-start")
 let end = document.getElementById("set-end")
 let find_path = document.getElementById("find-path")
+let reset_grid = document.getElementById('reset-grid')
 let start_pos = [0,0]
 let end_pos  = [19,19]
 let dragon_pos_list=[]
+
+//Modal element
+// Get DOM Elements
+const modal = document.querySelector('#my-modal');
+const closeBtn = document.querySelector('.close');
+
+// Events
+closeBtn.addEventListener('click', closeModal);
+window.addEventListener('click', outsideClick);
+
+// Close
+function closeModal() {
+  modal.style.display = 'none';
+}
+
+// Close If Outside Click
+function outsideClick(e) {
+  if (e.target == modal) {
+    modal.style.display = 'none';
+  }
+}
 
 //This is used to track if mouse is clicked
 //This will activate mousehover event when enabled
@@ -65,19 +87,24 @@ let state = 0
 //Set the board
 updateBoard()
 
-//Adding event listener to knight
+//Reload page
+reset_grid.addEventListener('click',()=>{
+    location.reload()
+})
+
+//Adding event listener to move knight
 start.addEventListener('click',()=>{
     end.classList.remove('selected')
     start.classList.add('selected')
     state = 1
-});
+})
 
-//Adding event listener to princess
+//Adding event listener to move princess
 end.addEventListener('click',()=>{
     start.classList.remove('selected')
     end.classList.add('selected')
     state = 2
-});
+})
 
 //Adding event listener to find-path button
 find_path.addEventListener('click',()=>{
